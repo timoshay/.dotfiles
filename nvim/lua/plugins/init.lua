@@ -1,0 +1,8 @@
+require 'plugins.mini'
+require 'plugins.moonfly'
+require 'plugins.ayu'
+require 'plugins.mini-completion'
+-- require 'plugins.mini-snippets'
+require 'plugins.fzf-lua'
+require 'plugins.treesitter'
+require 'plugins.undotree'

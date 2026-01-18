@@ -1,0 +1,12 @@
+-- install with: npm i -g vscode-langservers-extracted
+
+---@type vim.lsp.config
+return {
+  cmd = { 'vscode-html-language-server', '--stdio' },
+  filetypes = { 'html' },
+  init_options = {
+    provideFormatter = true,
+    embeddedLanguages = { css = true, javascript = true },
+    configurationSection = { 'html', 'css', 'javascript' },
+  },
+}

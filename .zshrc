@@ -8,13 +8,14 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="lambda"
-# ZSH_THEME="minimal"
-# ZSH_THEME="nicoulaj"
-# ZSH_THEME="sammy"
-# ZSH_THEME="itchy"
+# ZSH_THEME="mgutz"
+# ZSH_THEME="refined"
 ZSH_THEME="sobole"
+# ZSH_THEME="nicoulaj"
+# ZSH_THEME="lambda"
+# ZSH_THEME="sammy"
 # ZSH_THEME="simple"
+# ZSH_THEME="minimal"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -97,22 +98,48 @@ source $ZSH/oh-my-zsh.sh
 EDITOR='nvim'
 VISUAL=$EDITOR
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export MANPAGER='nvim +Man!'
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+  --color bg:#0a0e14 \
+  --color bg+:#0a0e14 \
+  --color border:#2e2e2e \
+  --color fg:#b2b2b2 \
+  --color fg+:#e4e4e4 \
+  --color gutter:#0a0e14 \
+  --color header:#80a0ff \
+  --color hl+:#f09479 \
+  --color hl:#f09479 \
+  --color info:#cfcfb0 \
+  --color marker:#f09479 \
+  --color pointer:#ff5189 \
+  --color prompt:#e6b450 \
+  --color spinner:#36c692
+  --color separator:#b3b1ad
+  --color border:#b3b1ad
+"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias zshcfg="nvim ~/.zshrc"
-alias nvimcfg="nvim ~/.config/nvim/init.lua"
-alias i3cfg="nvim ~/.config/i3/config"
+# Aliases
+alias ws="$HOME/workspace/"
+alias wd="$HOME/workspace/dev/"
+alias wn="$HOME/workspace/notes/obsidian-vault/"
+alias zshcfg="nvim $HOME/.zshrc"
+alias nvimcfg="nvim $HOME/.config/nvim/init.lua"
+alias tmuxcfg="nvim $HOME/.config/tmux/tmux.conf"
+alias i3cfg="nvim $HOME/.config/i3/config"
 alias la='ls -A'
 alias nv='nvim'
+alias nf='nvim $(fzf)'
+alias vf='vim $(fzf)'
 alias lg='lazygit'
 alias bat='batcat'
 
 source /usr/share/doc/fzf/examples/completion.zsh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+mkd() {
+    mkdir -p "$@" && cd "$_";
+}
+
+rmi() {
+    command rm -i "${@}";
+}

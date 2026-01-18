@@ -1,0 +1,5 @@
+return {
+  ["fzf-lua"] = "19d7020b700879759d7f834fc717dde086f673a7",
+  ["mini.nvim"] = "43ec25063430196d36f5fff5758c9101775f3d57",
+  moonfly = "1ad5a8d40176a8749f0c77b8875225d9d299a438"
+}
