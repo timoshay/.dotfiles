@@ -31,7 +31,6 @@ key("n", "<C-Right>", [[<cmd>vertical resize -5<cr>]])
 key("n", "<C-Up>", [[<cmd>horizontal resize -2<cr>]])
 key("n", "<C-Down>", [[<cmd>horizontal resize +2<cr>]])
 
--- key("n", "<leader>ff", vim.lsp.buf.format)
 -- key("n", "x", '"_x"', { noremap = true, silent = true })
 
 
@@ -61,7 +60,6 @@ key("t", "<leader>q", "<C-\\><C-n>:q<cr>")
 
 
 key("x", "p", "\"_dP")
--- key({"n", "v" }, "<leader>sc", "1z=")
 key({"n", "v" }, "<leader><cr>", "1z=")
 
 function ToggleStatusLine()
@@ -71,5 +69,4 @@ end
 key("n", "<leader>ts", ToggleStatusLine)
 
 -- TODO
--- whats best binds for Tab, BS, CR?
--- maybe add
+-- add maps for Tab, BS, CR
