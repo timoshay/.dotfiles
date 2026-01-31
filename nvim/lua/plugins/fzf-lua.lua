@@ -14,13 +14,15 @@ require("fzf-lua").setup({
             border = "single",
         },
     },
+
     files = {
         winopts = {
-            height = 0.60,
-            width = 0.40,
+            height = 0.70,
+            width = 0.80,
             preview = { hidden = true },
         },
     },
+
     buffers = {
         winopts = {
             height = 0.50,
@@ -28,28 +30,47 @@ require("fzf-lua").setup({
             preview = { hidden = true },
         },
     },
+
     grep = {
         winopts = {
             fullscreen = true,
         },
     },
+
     grep_curbuf = {
         winopts = {
+            border = "none",
             fullscreen = true,
+            preview = {
+            border = "none",
+            },
         },
     },
+
+    live_grep = {
+        winopts = {
+            border = "none",
+            fullscreen = true,
+            preview = {
+            border = "none",
+            },
+        },
+    },
+
     oldfiles = {
         winopts = {
-            height = 0.60,
-            width = 0.60,
+            height = 0.70,
+            width = 0.80,
             preview = { hidden = true },
         },
     },
+
     helptags = {
         winopts = {
             preview = { hidden = true },
         },
     },
+
     keymap = {
         builtin = {
             ["<c-f>"] = "preview-page-down",
@@ -80,4 +101,3 @@ map("n", "<leader>gw", "<cmd>FzfLua grep_cword<cr>") -- grep in working dir
 
 -- add lsptypedef
 
--- })

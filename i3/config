@@ -181,7 +181,7 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Control+Return exec urxvt -e tmux
 bindsym $mod+t exec thunar
 bindsym $mod+o exec urxvt -e lf
-bindsym $mod+Shift+d exec --no-startup-iddmenu_run  -l '4' -nf '#BBBBBB' -nb '#222222' -sb '#6076f2' -sf '#EEEEEE' -fn 'monospace-15'
+bindsym $mod+Shift+d exec --no-startup-iddmenu_run  -l '4' -nf '#BBBBBB' -nb '#222222' -sb '#6076f2' -sf '#EEEEEE' -fn 'monospace-20'
 bindsym $mod+p exec urxvt -e $HOME/.config/i3/scripts/note.sh
 
 

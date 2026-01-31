@@ -59,10 +59,15 @@ map a select-files
 map <delete> trash
 map . set hidden!
 map gd cd ~/Downloads/
-map gs cd /mnt/media/Storage/
+map gs cd ~/scripts/
+map gw cd ~/workspace/
+map gc cd ~/.dotfiles/
+map gt cd /tmp/
 map A :rename; cmd-end
 map o push :open-with-cli<space>
 map O push :open-with-gui<space>
 
+map <c-e> $$EDITOR "$f"
+map e $nvim "$f"
 
 
