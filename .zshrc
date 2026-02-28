@@ -100,12 +100,12 @@ VISUAL=$EDITOR
 
 export MANPAGER='nvim +Man!'
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-  --color bg:#0a0e14 \
-  --color bg+:#0a0e14 \
+  --color bg:#000000 \
+  --color bg+:#000000 \
   --color border:#2e2e2e \
   --color fg:#b2b2b2 \
   --color fg+:#e4e4e4 \
-  --color gutter:#0a0e14 \
+  --color gutter:#000000 \
   --color header:#80a0ff \
   --color hl+:#f09479 \
   --color hl:#f09479 \
@@ -132,6 +132,7 @@ alias nf='nvim $(fzf)'
 alias vf='vim $(fzf)'
 alias lg='lazygit'
 alias bat='batcat'
+# alias pdev='. $HOME/scripts/tmuxses.sh'
 
 source /usr/share/doc/fzf/examples/completion.zsh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
@@ -143,3 +144,4 @@ mkd() {
 rmi() {
     command rm -i "${@}";
 }
+

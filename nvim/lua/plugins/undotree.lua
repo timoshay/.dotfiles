@@ -1,4 +1,7 @@
-MiniDeps.add({
-        source = "mbbill/undotree",
-})
-vim.keymap.set("n", "<F5>", vim.cmd.UndotreeToggle)
+return
+{
+  "mbbill/undotree",
+  config = function()
+    vim.keymap.set("n", "<F5>", vim.cmd.UndotreeToggle)
+  end
+}

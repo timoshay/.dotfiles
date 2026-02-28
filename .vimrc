@@ -1,4 +1,5 @@
 set nocompatible
+set nu
 set relativenumber
 syntax on
 set tabstop=4
@@ -28,21 +29,24 @@ set nowb
 set noswapfile
 filetype on
 set termguicolors
-set ruler
 set matchpairs+=<:>
 set virtualedit=block
 set clipboard=unnamedplus
+set confirm
 
-" colorscheme industry
 colorscheme habamax
 
 
 let mapleader = "\<space>"
 
-inoremap jk <esc><right>
 nnoremap <Leader>q <Cmd>:q<CR>
 nnoremap <Leader><C-q> <Cmd>:q!<CR>
 nnoremap <Leader>w <Cmd>:w<CR>
 nnoremap <Leader>W <Cmd>:wq<CR>
 nnoremap <Leader><bs> <Cmd>:bdelete<CR>
-noremap <leader>rw [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]]
+noremap <Leader>rw :%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>
+
+nnoremap gy "+y
+vnoremap gy "+y
+nnoremap gp "+p
+vnoremap gp "+p

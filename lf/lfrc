@@ -37,37 +37,75 @@ cmd follow_link %{{
   lf -remote "send ${id} select '$(readlink $f)'"
 }}
 
-cmd trash ${{
-  files=$(printf "$fx" | tr '\n' ';')
-  while [ "$files" ]; do
-    file=${files%%;*}
+cmd trash %trash-put -- $fx
 
-    trash-put "$(basename "$file")"
-    if [ "$files" = "$file" ]; then
-      files=''
-    else
-      files="${files#*;}"
-    fi
-  done
+cmd mkd %{{
+    IFS=" "
+    file="$*"
+    mkdir -p -- "$file"
 }}
 
+cmd mkcd %{{
+    IFS=" "
+    file="$*"
+    mkdir -p -- "$file"
+    lf -remote "send $id cd \"$(printf '%s' "$file" | sed 's/\\/\\\\/g;s/"/\\"/g')\""
+}}
+
+cmd bulk-rename ${{
+    old="$(mktemp)"
+    new="$(mktemp)"
+    if [ -n "$fs" ]; then
+        fs="$(basename -a -- $fs)"
+    else
+        fs="$(ls)"
+    fi
+    printf '%s\n' "$fs" > "$old"
+    printf '%s\n' "$fs" > "$new"
+    $EDITOR "$new"
+    [ "$(wc -l < "$new")" -ne "$(wc -l < "$old")" ] && exit
+    paste "$old" "$new" | while IFS= read -r names; do
+        src="$(printf '%s' "$names" | cut -f1)"
+        dst="$(printf '%s' "$names" | cut -f2)"
+        if [ "$src" = "$dst" ] || [ -e "$dst" ]; then
+            continue
+        fi
+        mv -- "$src" "$dst"
+    done
+    rm -- "$old" "$new"
+    lf -remote "send $id unselect"
+}}
+
+cmd fzf_search ${{
+    cmd="rg --column --line-number --no-heading --color=always --smart-case"
+    fzf --ansi --disabled --layout=reverse --header="Search in files" --delimiter=: \
+        --bind="start:reload([ -n {q} ] && $cmd -- {q} || true)" \
+        --bind="change:reload([ -n {q} ] && $cmd -- {q} || true)" \
+        --bind='enter:become(lf -remote "send $id select \"$(printf "%s" {1} | sed '\''s/\\/\\\\/g;s/"/\\"/g'\'')\"")' \
+        --preview='cat -- {1}'
+}}
+map gf :fzf_search
+
+cmd t %touch "$@"
 cmd open-with-gui &$@ $fx
 cmd open-with-cli $$@ $fx
+
 map zp toggle_preview
 map gl follow_link
 map a select-files
 map <delete> trash
 map . set hidden!
 map gd cd ~/Downloads/
-map gs cd ~/scripts/
 map gw cd ~/workspace/
 map gc cd ~/.dotfiles/
 map gt cd /tmp/
-map A :rename; cmd-end
 map o push :open-with-cli<space>
 map O push :open-with-gui<space>
+map R bulk-rename
+
+map <a-n> push :t<space>
+map <a-d> push :mkd<space>
+map <a-c> push :mkcd<space>
 
 map <c-e> $$EDITOR "$f"
 map e $nvim "$f"
-
-

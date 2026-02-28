@@ -36,12 +36,14 @@ Xcursor.size: 32
 ! *color14: #85dc85
 ! *color15: #e4e4e4
 
-! ayu-dark theme
+! ayu-dark theme https://github.com/dnordstrom/dotfiles-as-files/blob/master/Xresources/.Xresources.ayu-dark
 
 ! Special
 
 *.foreground:   #b3b1ad
-*.background:   [95]#0a0e14
+! *.background:   [95]#0a0e14
+! *.background:   #0a0e14
+*.background:   #000000
 *.cursorColor:  #e6b450
 
 ! Black
@@ -91,7 +93,8 @@ Xcursor.size: 32
 !*.colorIT:
 !*.colorUL:
 
-URxvt.font: xft:IosevkaTermNerdFontMono:size=18 
+! URxvt.font: xft:IoskeleyMono:size=22
+URxvt.font: xft:IosevkaTermNerdFontMono:size=24
 /*URxvt.font: xft:Maple Mono:size=16*/
 /*URxvt.font: xft:Hack Nerd Font Mono:size=16*/
 /*URxvt.font: xft:RobotoMonoNerdFontMono:size=16*/
