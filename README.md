@@ -1,12 +1,12 @@
 # My dotfiles
+- i3wm
+- Polybar
+- Nvim
+- Tmux
+- Fzf
+- Iosevka
+- Zsh theme - [sobole](https://github.com/sobolevn/sobole-zsh-theme)
 
-i3wm
-
-tmux
-
-Iosevka
-
-Zsh theme - [sobole](https://github.com/sobolevn/sobole-zsh-theme)
-
-## Screenshots
-<img src="images/screenshot-1.png" width="600"/>
+<div align="center">
+<img src="images/screenshot-1.png" width="800"/>
+</div>
